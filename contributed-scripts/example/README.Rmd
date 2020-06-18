@@ -1,0 +1,7 @@
+# Example contributed script - line plots for sequence of station detections
+
+Amie MacDonald
+amacdonald@birdscanada.org
+
+## Overview
+
