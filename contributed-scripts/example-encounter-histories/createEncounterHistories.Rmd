@@ -1,0 +1,114 @@
+---
+title: "Example contributed script - create encounter histories from Motus detection data"
+author: "Amie MacDonald (amacdonald@birdscanada.org)"
+date: "2020-06-23"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview
+
+Arrange Motus detection data into encounter histories that can be used in mark-recapture modelling with this code. Transform the detection data into a dataframe where columns represent time intervals and each row is an individual. The entries in each cell represent whether an individual was detected by a Motus station during that time interval in a single-state or multi-state framework.
+
+## Setup
+
+Load packages:
+
+```{r packages}
+library(tidyverse)
+library(lubridate)
+
+# set timezone
+Sys.setenv(TZ = "UTC")
+
+```
+
+### Load sample dataset
+
+Use the sample dataset from project 176, restricted to just Semipalmated Sandpipers. This dataset is saved as an RDS file in same folder as this script.
+
+```{r data}
+
+df.alltags <- readRDS("sample_data.rds")
+
+```
+
+## Transform detection data into encounter histories
+
+### Single-state framework
+
+This example uses daily time intervals and restricts the study period to August and September 2015. Each Semipalmated Sandpiper receives a `1` for days it was detected by a Motus station and a `0` for days where it was not detected. In case there are days where no birds were detected, a fake tag is created that was detected everyday. Then the dataframe is pivoteda and the fake tag is removed.
+
+```{r transform}
+
+det.data <- df.alltags %>% 
+  select(motusTagID, ts) %>% # keep only the tag ID and the timestamp of the detection
+  mutate(ts = date(ts)) %>% # keep only the date of the timestamp, not the time of day
+  mutate(detect = 1) %>% # create a new column called detect and fill with 1 for each detection
+  filter(ts < "2015-10-01") %>% # remove all data in October and after
+  distinct() # remove duplicates (birds detected multiple times in the same day)
+
+min(det.data$ts) # find the earliest detection
+
+ts <- seq(ymd("2015-08-03"), ymd("2015-09-30"), by = "days") # create a sequence of all dates from the first 
+                                                             # detection to the end of September
+
+fake.df <- data.frame(ts) %>% # create a fake tag that was detected (with a false code) on all days
+  mutate(motusTagID = 99999) %>% 
+  mutate(detect = 99999)
+
+det.data.for.eh <- bind_rows(det.data, fake.df) %>% # add the fake tag to the real detection data
+  arrange(ts)
+
+enc.hist <- det.data.for.eh %>% # create the encounter history
+  tidyr::pivot_wider(id_cols = motusTagID, names_from = ts, values_from = detect, # transform the data
+                     values_fill = list(detect = 0)) %>%                          # fill all empty cells with 0
+  filter(!motusTagID == 99999) %>% # remove fake tag
+  arrange(motusTagID)
+
+```
+
+### Multi-state framework
+
+Create encounter histories where each location receives a different number in the encounter history (detection at site 1 is `1`, detection at site 2 is `2`, and no detection remains `0`). The process is the same as above, except the Motus station name is kept and assigned a number. In this example only the two stations in James Bay are kept.
+
+```{r transform_multistate}
+
+det.data <- df.alltags %>% 
+  select(motusTagID, ts, recvDeployName) %>% # keep tag ID, timestamp, and receiver name
+  mutate(ts = date(ts)) %>% # keep date but not time
+  filter(recvDeployName %in% c("Netitishi", "North Bluff")) %>% # keep only receivers in James Bay
+  distinct() # remove duplicates
+
+min(det.data$ts) # find first detection
+max(det.data$ts) # find last detection
+
+ts <- seq(ymd("2015-08-03"), ymd("2015-09-08"), by = "days") # create a sequence of all days between first and last
+                                                             # detection
+
+fake.df <- data.frame(ts) %>% # create the fake tag detected every day
+  mutate(motusTagID = 99999) %>% 
+  mutate(recvDeployName = "fake")
+
+det.data.for.ms.eh <- bind_rows(det.data, fake.df) %>% # add fake tag to detection data
+  arrange(ts) %>% 
+  mutate(recvDeployName = str_replace(recvDeployName, "North Bluff", "1")) %>% # replace receiver names with numbers
+  mutate(recvDeployName = str_replace(recvDeployName, "Netitishi", "2")) %>% 
+  mutate(recvDeployName = str_replace(recvDeployName, "fake", "99999"))
+
+det.data.for.ms.eh$recvDeployName <- as.numeric(det.data.for.ms.eh$recvDeployName) # format as numbers 
+
+ms.enc.hist <- det.data.for.ms.eh %>% # create encounter histories
+  tidyr::pivot_wider(id_cols = motusTagID, names_from = ts, values_from = recvDeployName,
+                     values_fill = list(recvDeployName = 0)) %>% # fill 0 for days a bird wasn't detected
+  filter(!motusTagID == 99999) %>% 
+  arrange(motusTagID)
+
+```
+
+
