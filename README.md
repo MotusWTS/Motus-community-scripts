@@ -10,8 +10,6 @@ Motus is by nature a collaborative endeavour. This repository provides a place f
 ### Summary
 
 1. Fork this repository into your own github account
-    + How to set up your own github account
-    + How to fork a repository
   
 2. Create a new folder with the topic of your script(s) (e.g. stopover length)
 
