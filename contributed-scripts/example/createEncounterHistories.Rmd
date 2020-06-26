@@ -1,9 +1,8 @@
 ---
 title: "Example contributed script - create encounter histories from Motus detection data"
 author: "Amie MacDonald (amacdonald@birdscanada.org)"
-
 date: "2020-06-23"
-output: github_document
+output: html_document
 editor_options: 
   chunk_output_type: console
 ---
@@ -20,7 +19,7 @@ Arrange Motus detection data into encounter histories that can be used in mark-r
 
 Load packages:
 
-```{r packages, warning=FALSE, message=FALSE}
+```{r packages}
 library(tidyverse)
 library(lubridate)
 
@@ -36,12 +35,6 @@ Use the sample dataset from project 176, restricted to just Semipalmated Sandpip
 ```{r data}
 
 df.alltags <- readRDS("sample_data.rds")
-
-```
-
-```{r show_data, echo=FALSE}
-
-knitr::kable(df.alltags[1:5, ])
 
 ```
 
@@ -72,27 +65,11 @@ fake.df <- data.frame(ts) %>% # create a fake tag that was detected (with a fals
 det.data.for.eh <- bind_rows(det.data, fake.df) %>% # add the fake tag to the real detection data
   arrange(ts)
 
-```
-
-```{r show_data2, echo=FALSE}
-
-knitr::kable(det.data.for.eh[1:5, ])
-
-```
-
-
-```{r enchist}
 enc.hist <- det.data.for.eh %>% # create the encounter history
   tidyr::pivot_wider(id_cols = motusTagID, names_from = ts, values_from = detect, # transform the data
                      values_fill = list(detect = 0)) %>%                          # fill all empty cells with 0
   filter(!motusTagID == 99999) %>% # remove fake tag
   arrange(motusTagID)
-
-```
-
-```{r show_data3, echo=FALSE}
-
-knitr::kable(enc.hist[1:5, ])
 
 ```
 
@@ -126,16 +103,6 @@ det.data.for.ms.eh <- bind_rows(det.data, fake.df) %>% # add fake tag to detecti
 
 det.data.for.ms.eh$recvDeployName <- as.numeric(det.data.for.ms.eh$recvDeployName) # format as numbers 
 
-```
-
-```{r show_data4, echo=FALSE}
-
-knitr::kable(det.data.for.ms.eh[1:5, ])
-
-```
-
-```{r}
-
 ms.enc.hist <- det.data.for.ms.eh %>% # create encounter histories
   tidyr::pivot_wider(id_cols = motusTagID, names_from = ts, values_from = recvDeployName,
                      values_fill = list(recvDeployName = 0)) %>% # fill 0 for days a bird wasn't detected
@@ -144,8 +111,4 @@ ms.enc.hist <- det.data.for.ms.eh %>% # create encounter histories
 
 ```
 
-```{r show_data5, echo=FALSE}
 
-knitr::kable(ms.enc.hist[1:5, ])
-
-```
