@@ -1,4 +1,4 @@
-# Motus-community-scripts
+# Motus community scripts
 a repository for Motus users to share their R scripts for working with Motus data
 
 ## Overview
@@ -10,8 +10,6 @@ Motus is by nature a collaborative endeavour. This repository provides a place f
 ### Summary
 
 1. Fork this repository into your own github account
-    + How to set up your own github account
-    + How to fork a repository
   
 2. Create a new folder with the topic of your script(s) (e.g. stopover length)
 
@@ -30,7 +28,6 @@ Motus is by nature a collaborative endeavour. This repository provides a place f
 * Please write your code so that it can be replicated by someone else as easily as possible
     + Annotate and comment generously
     + Avoid specifying directories on your own computer
-    + Check out these tips for writing reproducible code
     
 * If you share a sample dataset that cannot be acquired through the `motus` package, please include it as a small RDS file
 
