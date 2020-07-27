@@ -73,7 +73,7 @@ Navigate to the [Motus community
 repository](https://github.com/ajmacdonald3/Motus-community-scripts) and
 click on the **Fork** button in the top right corner of the page.
 
-![](fork_button.JPG)
+![](images/fork_button.JPG)
 
 Now you can navigate to your fork (copy) of the Motus community
 repository on your GitHub page.
@@ -86,7 +86,7 @@ local copy of the files on your computer. On the page for your fork of
 the repository on GitHub, click on the green **Code** button in the
 upper right of the page.
 
-![](code_button.JPG)
+![](images/code_button.JPG)
 
 Then under **Clone with HTTPS** there is a URL for the repository. Copy
 this URL. Now open RStudio and click **File \> New Project \> Version
@@ -124,16 +124,16 @@ will change to a green A (for “added”) if it is a file that hasn’t yet
 been uploaded to GitHub. If you have uploaded a previous version of this
 file to GitHub, you’ll see a blue M (for “modified”).
 
-![](git_tab2.JPG)
+![](images/git_tab2.JPG)
 
 Then click on **Commit**.
 
-![](git_tab3.jpg)
+![](images/git_tab3.jpg)
 
 This will open a new window. Enter a short commit message describing
 what you added or modified and press **Commit**.
 
-![](commit_window2.jpg)
+![](images/commit_window2.jpg)
 
 It’s good practice to make sure no one else has made changes to the file
 before you “push” your changes to GitHub. Since you are working on your
@@ -142,16 +142,16 @@ your fork. Nevertheless, it doesn’t hurt to check. “Pull” the most
 recent version of the GitHub repository (your fork on your GitHub page)
 onto your local copy on your computer by clicking on **Pull**.
 
-![](commit_window4.jpg)
+![](images/commit_window4.jpg)
 
 You should see a new window that states that the local copy is up to
 date.
 
-![](git_pull.JPG)
+![](images/git_pull.JPG)
 
 Now you can push your changes to your fork of the repository on GitHub.
 
-![](commit_window5.jpg)
+![](images/commit_window5.jpg)
 
 Now you are ready to share your script in the main Motus community
 scripts repository on the MotusWTS GitHub page.
@@ -163,7 +163,7 @@ repository](https://github.com/ajmacdonald3/Motus-community-scripts). At
 the top, there’s a row of tabs—click on **Pull requests**, then click on
 the green **New pull request** button.
 
-![](pull_request_tab.jpg)
+![](images/pull_request_tab.jpg)
 
 On the **Compare changes** page, click **compare across forks**. In the
 **base repository** drop-down list, select the original Motus community
@@ -171,7 +171,7 @@ scripts repository. In the **head repository** drop-down list, select
 your fork, then under **compare**, select the branch you made your
 changes in.
 
-![](compare_changes1.jpg)
+![](images/compare_changes1.jpg)
 
 Write a title and description for your pull request so that the folks at
 Motus know what you are contributing. Once received, Motus will push
