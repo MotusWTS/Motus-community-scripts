@@ -77,7 +77,7 @@ repository.
 ### Fork the repository on GitHub
 
 Navigate to the [Motus community
-repository](https://github.com/ajmacdonald3/Motus-community-scripts) and
+repository](https://github.com/MotusWTS/Motus-community-scripts) and
 click on the **Fork** button in the top right corner of the page.
 
 ![](images/fork_button.JPG)

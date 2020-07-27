@@ -17,9 +17,15 @@ Motus is by nature a collaborative endeavour. This repository provides a place f
 
 4. Make a pull request when you are ready to share your script(s)
 
+**Notes:**
+
+* If you would prefer not to use GitHub, you can submit a zip file with your script, instructions, and any associated files to motus@birdscanada.org and we will upload it to the repository.
+
+* If you previously forked the Motus repository to make earlier changes and are now making new changes later, you should keep your fork current in case others have made changes in the interim to the repository.
+
 ### Detailed instructions
 
-[Click here for detailed instructions on submitting scripts](https://github.com/ajmacdonald3/Motus-community-scripts/blob/master/contribution_instructions.md)
+[Click here for detailed instructions on submitting scripts](https://github.com/MotusWTS/Motus-community-scripts/blob/master/contribution_instructions.md)
 
 ## Guidelines
 
