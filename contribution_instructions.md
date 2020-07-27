@@ -1,9 +1,16 @@
 Instructions for contributing scripts through GitHub
 ================
 
-**Note:** If you would prefer not to use GitHub, you can submit a zip
-file with your script, instructions, and any associated files to
-<motus@birdscanada.org> and we will upload it to the repository.
+**Notes:**
+
+  - If you would prefer not to use GitHub, you can submit a zip file
+    with your script, instructions, and any associated files to
+    <motus@birdscanada.org> and we will upload it to the repository.
+
+  - If you previously forked the Motus repository to make earlier
+    changes and are now making new changes later, you should keep your
+    fork current in case others have made changes in the interim to the
+    repository.
 
 ## 1\. Create a GitHub account and install Git
 
@@ -177,11 +184,6 @@ Write a title and description for your pull request so that the folks at
 Motus know what you are contributing. Once received, Motus will push
 your contribution to the main repository so that others can benefit from
 your code.
-
-**Note:** If you previously forked the Motus repository to make earlier
-changes and are now making new changes later, you should keep your fork
-current in case others have made changes in the interim to the
-repository.
 
 ## Resources
 
