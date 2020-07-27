@@ -19,7 +19,7 @@ Motus is by nature a collaborative endeavour. This repository provides a place f
 
 ### Detailed instructions
 
-[Click here for detailed instructions on submitting scripts]()
+[Click here for detailed instructions on submitting scripts](https://github.com/ajmacdonald3/Motus-community-scripts/blob/master/contribution_instructions.md)
 
 ## Guidelines
 
