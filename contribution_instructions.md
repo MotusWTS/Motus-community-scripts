@@ -124,7 +124,7 @@ will change to a green A (for “added”) if it is a file that hasn’t yet
 been uploaded to GitHub. If you have uploaded a previous version of this
 file to GitHub, you’ll see a blue M (for “modified”).
 
-![](images/git_tab2.JPG)
+![](images/git_tab2.jpg)
 
 Then click on **Commit**.
 
