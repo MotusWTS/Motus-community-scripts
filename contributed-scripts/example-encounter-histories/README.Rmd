@@ -13,13 +13,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Overview
 
-Arrange Motus detection data into encounter histories that can be used in mark-recapture modelling with this code. Transform the detection data into a dataframe where columns represent time intervals and each row is an individual. The entries in each cell represent whether an individual was detected by a Motus station during that time interval in a single-state or multi-state framework.
+Arrange Motus detection data into encounter histories that can be used in mark-recapture modelling with this code. Transform the detection data into a dataframe where columns represent time intervals and each row is an individual. The entries in each cell represent whether an individual was detected by a Motus station during that time interval in either a single-state or a multi-state framework.
 
 ## Setup
 
 Load packages:
 
 ```{r packages, warning=FALSE, message=FALSE}
+
 library(tidyverse)
 library(lubridate)
 
@@ -48,7 +49,7 @@ knitr::kable(df.alltags[1:5, ], caption = "Detection data")
 
 ### Single-state framework
 
-This example uses daily time intervals and restricts the study period to August and September 2015. Each Semipalmated Sandpiper receives a `1` for days it was detected by a Motus station and a `0` for days where it was not detected. In case there are days where no birds were detected, a fake tag is created that was detected everyday. Then the dataframe is pivoteda and the fake tag is removed.
+This example uses daily time intervals and restricts the study period to August and September 2015. Each Semipalmated Sandpiper receives a `1` for days it was detected by a Motus station and a `0` for days where it was not detected. In case there are days where no birds were detected, a fake tag is created that was detected everyday. Then the dataframe is pivoted and the fake tag is removed.
 
 ```{r transform}
 
