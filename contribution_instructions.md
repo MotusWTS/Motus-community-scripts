@@ -165,25 +165,23 @@ scripts repository on the MotusWTS GitHub page.
 
 ## 5\. Make a pull request to merge with the original repository
 
-Navigate to the original [Motus community scripts
-repository](https://github.com/ajmacdonald3/Motus-community-scripts). At
-the top, there’s a row of tabs—click on **Pull requests**, then click on
-the green **New pull request** button.
+Navigate to your fork of the Motus community scripts repository. Above
+the list of files there are two buttons—click on **Pull request**.
 
-![](images/pull_request_tab.jpg)
+![](images/pull_request1.jpg)
 
-On the **Compare changes** page, click **compare across forks**. In the
-**base repository** drop-down list, select the original Motus community
-scripts repository. In the **head repository** drop-down list, select
-your fork, then under **compare**, select the branch you made your
-changes in.
+On the **Compare changes** page, you should see four drop-down lists, if
+you only see two, click **compare across forks**. In the **base
+repository** drop-down list, select the original Motus community scripts
+repository. In the **head repository** drop-down list, select your fork,
+then under **compare**, select the branch you made your changes in.
 
-![](images/compare_changes1.jpg)
+![](images/pull_request3.jpg)
 
-Write a title and description for your pull request so that the folks at
-Motus know what you are contributing. Once received, Motus will push
-your contribution to the main repository so that others can benefit from
-your code.
+Click **Create pull request** and write a title and description for your
+pull request so that the folks at Motus know what you are contributing.
+Once received, Motus will push your contribution to the main repository
+so that others can benefit from your code.
 
 ## Resources
 
