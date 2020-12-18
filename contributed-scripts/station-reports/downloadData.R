@@ -6,7 +6,7 @@ downloadMotus_recvData <- function(site.name = '', serno = '', projID = '', dir 
   if (identical(Sys.getenv('motus_userAuth'), '')) {
     message("Logging in to Motus...")
     Sys.setenv(motus_userLogin = 'lberrigan')  # Put your Motus username here
-    Sys.setenv(motus_userPassword = 'motus atlantic*')  # Put your Motus password here
+    Sys.setenv(motus_userPassword = '[PASSWORD]')  # Put your Motus password here
     tryCatch({
       motus:::local_auth()
       Sys.setenv(motus_userAuth = TRUE)
