@@ -10,8 +10,8 @@ Arrange Motus detection data into encounter histories that can be used
 in mark-recapture modelling with this code. Transform the detection data
 into a dataframe where columns represent time intervals and each row is
 an individual. The entries in each cell represent whether an individual
-was detected by a Motus station during that time interval in a
-single-state or multi-state framework.
+was detected by a Motus station during that time interval in either a
+single-state or a multi-state framework.
 
 ## Setup
 
@@ -54,7 +54,7 @@ August and September 2015. Each Semipalmated Sandpiper receives a `1`
 for days it was detected by a Motus station and a `0` for days where it
 was not detected. In case there are days where no birds were detected, a
 fake tag is created that was detected everyday. Then the dataframe is
-pivoteda and the fake tag is removed.
+pivoted and the fake tag is removed.
 
 ``` r
 det.data <- df.alltags %>% 
