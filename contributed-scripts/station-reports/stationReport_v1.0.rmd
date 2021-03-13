@@ -439,9 +439,7 @@ df.bySpp %>%
   group_by(Species) %>%
   summarise(Hits = sum(Hits, na.rm = T), Individuals = sum(Individuals, na.rm = T), Days = max(Days, na.rm = T)) %>%
   ggplot(aes(x = "", y = Individuals, fill = fct_reorder(Species, Individuals))) +
-  geom_bar(width = 1, stat = "identity")+
-  geom_text(aes(label = Individuals), position = position_stack(vjust = 0.5), fontface = 'bold') +
-  coord_polar("y", start = 0)+
+  geom_bar(width = 1, stat = "identity", position='dodge')+
   labs(y = "Number of Individual Animals", x = "", fill = 'Species', title = "Number of individual animals per species")+
   scale_fill_manual(values = cols)+
   theme_bw()+
@@ -471,9 +469,8 @@ df.byProj %>%
   group_by(Project) %>%
   summarise(Hits = sum(Hits, na.rm = T), Individuals = sum(Individuals, na.rm = T), Days = max(Days, na.rm = T)) %>%
   ggplot(aes(x = "", y = Individuals, fill = fct_reorder(Project, Individuals))) +
-  geom_bar(width = 1, stat = "identity")+
-  geom_text(aes(label = Individuals), position = position_stack(vjust = 0.5), fontface = 'bold') +
-  coord_polar("y", start = 0)+
+  geom_bar(width = 1, stat = "identity", position = 'dodge') +
+ # coord_polar("y", start = 0)+
   labs(y = "Number of Individual Animals", x = "", title = "Number of individuals animals per project", fill = 'Project ID')+
   scale_fill_manual(values = cols)+
   theme_bw()+
@@ -522,7 +519,8 @@ df %>%
   ggplot(aes(date, fill = Species)) +
   geom_histogram(binwidth = plot.binwidth)+ 
   scale_fill_manual(values = cols)+
-  labs(x = 'Date', y = 'Number of Individuals', fill = 'Species', title = 'Number of individuals detected each day')
+  labs(x = 'Date', y = 'Number of Individuals', fill = 'Species', title = 'Number of individuals detected each day')+
+  theme_minimal()
 ```
 
 
@@ -538,7 +536,9 @@ df %>%
   left_join(top, by = 'speciesEN') %>%
   ggplot(aes(Hour, fill = Species)) +
   geom_histogram(bins = 24)+ 
-  labs(x = 'Hour', y = 'Number of detections', fill = 'Species', title = 'Number of detections by time of day')
+  coord_polar("x", start = 0)+
+  labs(x = 'Hour', y = 'Number of detections', fill = 'Species', title = 'Number of detections by time of day')+
+  theme_minimal()
  
 
 ```
